@@ -1,12 +1,7 @@
 #pragma once
-/*
-NOMBRE Y APELLIDOS:
-GRUPO: B34  LAB: 1
-COLLADO MAMBLONA, ALBERTO
-G”MEZ ALONSO, JOS… LUIS
-*/
 
-/** ADT Arbin: ·rboles binarios.
+
+/** ADT Arbin: √°rboles binarios.
  @file Arbin.h */
 
 #ifndef __ARBIN_H
@@ -17,58 +12,58 @@ G”MEZ ALONSO, JOS… LUIS
 using namespace std;
 
 /**
-ImplementaciÛn del TAD Arbol binario mediante nodos y punteros en
-memoria din·mica
+Implementaci√≥n del TAD Arbol binario mediante nodos y punteros en
+memoria din√°mica
 
 Las operaciones son:
 
-- ArbolVacio: -> Arbin. Generadora que crea un ·rbol vacÌo.
-Implementada mediante un constructor sin par·metros.
-- ArbolSimple: Elem -> Arbin. Generadora que crea un ·rbol con
-un ˙nico nodo. Implementada mediante un constructor con par·metro
+- ArbolVacio: -> Arbin. Generadora que crea un √°rbol vac√≠o.
+Implementada mediante un constructor sin par√°metros.
+- ArbolSimple: Elem -> Arbin. Generadora que crea un √°rbol con
+un √∫nico nodo. Implementada mediante un constructor con par√°metro
 el valor a poner en el nodo.
 - Cons: Arbin, Elem, Arbin -> Arbin. Generadora que construye un
-·rbol con un hijo izquierdo, un nodo raiz, y un hijo derecho.
+√°rbol con un hijo izquierdo, un nodo raiz, y un hijo derecho.
 Implementada mediante un constructor que toma como primer argumento
 el hijo izquierdo, como segundo el valor a poner en la raiz, y como
 tercer argumento el hijo derecho.
 - raiz: Arbin -> Elem. Observadora (parcial) que devuelve el valor
-de la raiz (no definida para ·rboles vacÌos)
+de la raiz (no definida para √°rboles vac√≠os)
 - hijoIz: Arbin -> Arbin. Observadora (parcial) que devuelve el
-hijo izquierdo (no definida para ·rboles vacÌos)
+hijo izquierdo (no definida para √°rboles vac√≠os)
 - hijoDer: Arbin -> Arbin. Observadora (parcial) que devuelve el
-hijo derecho (no definida para ·rboles vacÌos)
-- esVacio: Arbin -> bool. Observadora que determina si un ·rbol
-es vacÌo o no
+hijo derecho (no definida para √°rboles vac√≠os)
+- esVacio: Arbin -> bool. Observadora que determina si un √°rbol
+es vac√≠o o no
 
-@author Adaptada por Mercedes GÛmez y JosÈ Luis Sierra a partir de una implementaciÛn de  Marco Antonio GÛmez MartÌn, 2012
+@author Adaptada por Mercedes G√≥mez y Jos√© Luis Sierra a partir de una implementaci√≥n de  Marco Antonio G√≥mez Mart√≠n, 2012
 */
 
-/// ExcepciÛn generada por algunos mÈtodos
+/// Excepci√≥n generada por algunos m√©todos
 class EArbolVacio {};
 
 template <class T>
 class Arbin {
 public:
-	/** Constructor; operaciÛn ArbolVacÌo */
+	/** Constructor; operaci√≥n ArbolVac√≠o */
 	Arbin() {
 		_ra = NULL;
 	};
 
-	/** Constructor; operaciÛn ArbolSimple (construye un ·rbol con
-		un ˙nico nodo)
+	/** Constructor; operaci√≥n ArbolSimple (construye un √°rbol con
+		un √∫nico nodo)
 
-		@param elem Elemento a alojar en la raÌz del ·rbol generado */
+		@param elem Elemento a alojar en la ra√≠z del √°rbol generado */
 	Arbin(const T &elem) {
 		_ra = new Nodo(elem);
 		_ra->addRef();
 	};
 
-	/** Constructor; operaciÛn Cons (construye un ·rbol con un hijo izquierdo,
-		una raÌz y un hijo derecho)
+	/** Constructor; operaci√≥n Cons (construye un √°rbol con un hijo izquierdo,
+		una ra√≠z y un hijo derecho)
 
 		@param iz El hijo izquierdo
-		@param elem El valor a poner en la raÌz
+		@param elem El valor a poner en la ra√≠z
 		@param dr El hijo derecho
 	 */
 	Arbin(const Arbin &iz, const T &elem, const Arbin &dr) {
@@ -76,11 +71,11 @@ public:
 		_ra->addRef();
 	};
 
-	/** Devuelve el valor alojado en la raÌz del ·rbol
+	/** Devuelve el valor alojado en la ra√≠z del √°rbol
 
-		error: Falla si el ·rbol est· vacÌo (excepciÛn EArbolVacio)
+		error: Falla si el √°rbol est√° vac√≠o (excepci√≥n EArbolVacio)
 
-		@return El valor en la raÌz
+		@return El valor en la ra√≠z
 	 */
 	const T& raiz() const {
 		if (_ra == NULL) {
@@ -89,9 +84,9 @@ public:
 		return _ra->_elem;
 	}
 
-	/** Devuelve el hijo izquierdo del ·rbol
+	/** Devuelve el hijo izquierdo del √°rbol
 
-		error: Falla si el ·rbol est· vacÌo (excepciÛn EArbolVacio)
+		error: Falla si el √°rbol est√° vac√≠o (excepci√≥n EArbolVacio)
 
 		@return El hijo izquierdo
 	 */
@@ -103,9 +98,9 @@ public:
 	}
 
 
-	/** Devuelve el hijo derecho del ·rbol
+	/** Devuelve el hijo derecho del √°rbol
 
-		error: Falla si el ·rbol est· vacÌo (excepciÛn EArbolVacio)
+		error: Falla si el √°rbol est√° vac√≠o (excepci√≥n EArbolVacio)
 
 		@return El hijo derecho
 	 */
@@ -116,28 +111,28 @@ public:
 		return Arbin(_ra->_dr);
 	}
 
-	/** Determina si el ·rbol est· vacÌo.
+	/** Determina si el √°rbol est√° vac√≠o.
 
-		@return true si el ·rbol est· vacÌo; false en otro caso
+		@return true si el √°rbol est√° vac√≠o; false en otro caso
 	 */
 	bool esVacio() const {
 		return _ra == NULL;
 	}
 
 
-	/** Operador de igualdad entre ·rboles binarios
+	/** Operador de igualdad entre √°rboles binarios
 
-		@param el ·rbol cuya igualdad con el receptor quiere comprobarse
+		@param el √°rbol cuya igualdad con el receptor quiere comprobarse
 
-		@return true si los ·rboles son iguales; false en otro caso
+		@return true si los √°rboles son iguales; false en otro caso
 	 */
 	bool operator==(const Arbin& a) const {
 		return sonIguales(_ra, a._ra);
 	}
 
-	/** Operador de asignaciÛn
+	/** Operador de asignaci√≥n
 
-		@param el ·rbol que quiere asignarse al receptor
+		@param el √°rbol que quiere asignarse al receptor
 
 		@return una referencia al objeto receptor
 	 */
@@ -152,7 +147,7 @@ public:
 
 	/** Constructor de copia
 
-		@param el ·rbol que quiere copiarse
+		@param el √°rbol que quiere copiarse
 	 */
 	Arbin(const Arbin& a) {
 		if (a._ra != NULL) a._ra->addRef();
@@ -167,29 +162,29 @@ public:
 
 private:
 	/**
-	 Clase Nodo que almacena internamente un nodo de un ·rbol. Para ello
-	 almacena: (i) el valor del nodo, (ii) un puntero al nodo raÌz del ·rbol
-	 izquierdo, y (iii) un puntero al nodo raÌz del ·rbol derecho.
-	 TambiÈn se lleva la cuenta del n˙mero de punteros que apuntan a dicho
-	 nodo, para permitir la representaciÛn eficiente de ·rboles, permitiendo
-	 la comparticiÛn de estructura entre los mismos.
+	 Clase Nodo que almacena internamente un nodo de un √°rbol. Para ello
+	 almacena: (i) el valor del nodo, (ii) un puntero al nodo ra√≠z del √°rbol
+	 izquierdo, y (iii) un puntero al nodo ra√≠z del √°rbol derecho.
+	 Tambi√©n se lleva la cuenta del n√∫mero de punteros que apuntan a dicho
+	 nodo, para permitir la representaci√≥n eficiente de √°rboles, permitiendo
+	 la compartici√≥n de estructura entre los mismos.
 	 */
 	class Nodo {
 	public:
 		/** Constructor por defecto
 		*/
 		Nodo() : _iz(NULL), _dr(NULL), _nrefs(0) {}
-		/** Constructor; construye un nodo para un ·rbol unitario (sin
+		/** Constructor; construye un nodo para un √°rbol unitario (sin
 			hijo izquierdo, sin hijo derecho)
 
 			@param el valor a alojar en el nodo
 		 */
 		Nodo(const T &elem) : _elem(elem), _iz(NULL), _dr(NULL), _nrefs(0) {}
-		/** Constructor; construye un nodo para un ·rbol con
+		/** Constructor; construye un nodo para un √°rbol con
 			hijo izquierdo e hijo derecho
 
 			@param iz,  el hijo izquierdo
-			@param elem, el valor a alojar en la raÌz
+			@param elem, el valor a alojar en la ra√≠z
 			@param dr, el hijo derecho
 		 */
 		Nodo(Nodo *iz, const T &elem, Nodo *dr) :
@@ -206,21 +201,21 @@ private:
 		T _elem;         // valor del nodo
 		Nodo* _iz;       // hijo izquierdo
 		Nodo* _dr;       // hijo derecho
-		int _nrefs;      // n˙mero de referencias al nodo
+		int _nrefs;      // n√∫mero de referencias al nodo
 	};
-	/** Constructor privado; crea un nuevo ·rbol con una raÌz dada
+	/** Constructor privado; crea un nuevo √°rbol con una ra√≠z dada
 
-	@param ra, el nodo raÌz del ·rbol
+	@param ra, el nodo ra√≠z del √°rbol
  */
 	Arbin(Nodo* ra) {
 		_ra = ra;
 		if (_ra != NULL) _ra->addRef();
 	}
 
-	/** LiberaciÛn de la estructura de nodos, teniendo
-		en cuenta la comparticiÛn.
+	/** Liberaci√≥n de la estructura de nodos, teniendo
+		en cuenta la compartici√≥n.
 
-	   @param n, puntero a la raÌz de la estructura a liberar
+	   @param n, puntero a la ra√≠z de la estructura a liberar
 	*/
 	static void libera(Nodo *n) {
 		if (n != NULL) {
@@ -232,12 +227,12 @@ private:
 			}
 		}
 	}
-	/** ComprobaciÛn de la igualdad entre dos estructuras de nodos.
+	/** Comprobaci√≥n de la igualdad entre dos estructuras de nodos.
 
 	   @param no, primera estructura
 	   @param n1, segunda estructura
 	   @return true si los punteros apuntan a estructuras que representan
-			   el mismo ·rbol, false en otro caso
+			   el mismo √°rbol, false en otro caso
 	*/
 
 	static bool sonIguales(const Nodo *no, const Nodo* n1) {
@@ -250,7 +245,7 @@ private:
 
 	}
 
-	Nodo* _ra; // puntero al nodo raÌz
+	Nodo* _ra; // puntero al nodo ra√≠z
 
 };
 
