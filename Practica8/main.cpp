@@ -1,10 +1,3 @@
-/*
-NOMBRE Y APELLIDOS:
-GRUPO: B34  LAB: 1
-COLLADO MAMBLONA, ALBERTO
-GÓMEZ ALONSO, JOSÉ LUIS
-*/
-
 #include <iostream>
 #include <string>
 #include "Arbin.h"
