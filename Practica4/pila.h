@@ -1,50 +1,45 @@
-//ALUMNOS:
-//GRUPO: B34  LAB: 1
-//COLLADO MAMBLONA, ALBERTO
-//G”MEZ ALONSO, JOS… LUIS
-
 /**
   @file Pila.h
 
-  ImplementaciÛn del TAD Pila utilizando un
-  vector din·mico cuyo tamaÒo va creciendo si
+  Implementaci√≥n del TAD Pila utilizando un
+  vector din√°mico cuyo tama√±o va creciendo si
   es necesario.
 
   Estructura de Datos y Algoritmos
-  Facultad de Inform·tica
+  Facultad de Inform√°tica
   Universidad Complutense de Madrid
 
- (c) Marco Antonio GÛmez MartÌn, 2012   Mercedes GÛmez Albarr·n, 2016
+ (c) Marco Antonio G√≥mez Mart√≠n, 2012   Mercedes G√≥mez Albarr√°n, 2016
 */
 #ifndef __PILAVD_H
 #define __PILAVD_H
 #include <cstddef>
 
-/// Excepciones generadas por algunos mÈtodos
+/// Excepciones generadas por algunos m√©todos
 class EPilaVacia {};
 
 /**
- ImplementaciÛn del TAD Pila utilizando vectores din·micos.
+ Implementaci√≥n del TAD Pila utilizando vectores din√°micos.
 
  Las operaciones son:
 
  - PilaVacia: -> Pila. Generadora implementada en el
-   constructor sin par·metros.
+   constructor sin par√°metros.
  - apila: Pila, Elem -> Pila. Generadora
  - desapila: Pila - -> Pila. Modificadora parcial.
  - cima: Pila - -> Elem. Observadora parcial.
  - esVacia: Pila -> Bool. Observadora.
 
- @author Marco Antonio GÛmez MartÌn  Mercedes GÛmez Albarr·n
+ @author Marco Antonio G√≥mez Mart√≠n  Mercedes G√≥mez Albarr√°n
  */
 template <class T>
 class Pila {
 public:
 
-	/** TamaÒo inicial del vector din·mico. */
+	/** Tama√±o inicial del vector din√°mico. */
 	static const int TAM_INICIAL = 10;
 
-	/** Constructor; operaciÛn PilaVacia */
+	/** Constructor; operaci√≥n PilaVacia */
 	Pila() {
 		_v = new T[TAM_INICIAL];
 		_tam = TAM_INICIAL;
@@ -52,7 +47,7 @@ public:
 	}
 
 	/**
-	 Apila un elemento. OperaciÛn generadora.
+	 Apila un elemento. Operaci√≥n generadora.
 
 	 @param elem Elemento a apilar.
 	*/
@@ -64,8 +59,8 @@ public:
 	}
 	
 	/**
-	 Desapila un elemento. OperaciÛn modificadora parcial.
-	 error: falla si la pila est· vacÌa
+	 Desapila un elemento. Operaci√≥n modificadora parcial.
+	 error: falla si la pila est√° vac√≠a
 	*/
 	void desapila() {
 		if (esVacia())
@@ -74,10 +69,10 @@ public:
 	}
 
 	/**
-	 Devuelve el elemento en la cima de la pila. OperaciÛn
+	 Devuelve el elemento en la cima de la pila. Operaci√≥n
 	 observadora parcial.
 
-	 error: falla si la pila est· vacÌa
+	 error: falla si la pila est√° vac√≠a
 	 @return Elemento en la cima de la pila.
 	 */
 	const T &cima() const {
@@ -87,9 +82,9 @@ public:
 	}
 
 	/**
-	 Indica si la pila est· vacÌa.
+	 Indica si la pila est√° vac√≠a.
 
-	 @return true si la pila no tiene ning˙n elemento.
+	 @return true si la pila no tiene ning√∫n elemento.
 	 */
 	bool esVacia() const {
 		return _numElems == 0;
@@ -105,7 +100,7 @@ public:
 		copia(other);
 	}
 
-	/** Operador de asignaciÛn */
+	/** Operador de asignaci√≥n */
 	Pila<T> &operator=(const Pila<T> &other) {
 		if (this != &other) { 
 			libera();
@@ -114,7 +109,7 @@ public:
 		return *this;
 	}
 
-	/**  Operador de comparaciÛn. 	*/
+	/**  Operador de comparaci√≥n. 	*/
 	bool operator==(const Pila<T> &rhs) const {
 		bool iguales = true;
 		if (_numElems != rhs._numElems)
@@ -141,19 +136,19 @@ private:
 	/** Puntero al array que contiene los datos. */
 	T *_v;
 
-	/** TamaÒo del vector _v. */
+	/** Tama√±o del vector _v. */
 	unsigned int _tam;
 
-	/** N˙mero de elementos reales guardados. */
+	/** N√∫mero de elementos reales guardados. */
 	unsigned int _numElems;
 
-	/** CÛdigo para liberar la memoria din·mica usada en la pila */
+	/** C√≥digo para liberar la memoria din√°mica usada en la pila */
 	void libera() {
 		delete []_v;
 		_v = NULL;
 	}
 
-	/** CÛdigo para copiar sobre el receptor */
+	/** C√≥digo para copiar sobre el receptor */
 	void copia(const Pila<T> &other) {
 		_tam = other._numElems + TAM_INICIAL; 
 		_numElems = other._numElems;
@@ -162,7 +157,7 @@ private:
 			_v[i] = other._v[i];
 	}
 
-	/** CÛdigo para hacer crecer el vector din·mico */
+	/** C√≥digo para hacer crecer el vector din√°mico */
 	void amplia() {
 		T *viejo = _v;
 		_tam *= 2;
