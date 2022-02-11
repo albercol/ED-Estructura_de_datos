@@ -1,50 +1,44 @@
-//ALUMNOS:
-//GRUPO: B34  LAB: 1
-//COLLADO MAMBLONA, ALBERTO
-//GÓMEZ ALONSO, JOSÉ LUIS
-
-
 /**
 @file Cola.h
 
-Implementación del TAD Cola utilizando una
+ImplementaciÃ³n del TAD Cola utilizando una
 lista enlazada de nodos.
 
 Estructura de Datos y Algoritmos
-Facultad de Informática
+Facultad de InformÃ¡tica
 Universidad Complutense de Madrid
 
-(c) Marco Antonio Gómez Martín, 2012   Mercedes Gómez Albarrán, 2021
+(c) Marco Antonio GÃ³mez MartÃ­n, 2012   Mercedes GÃ³mez AlbarrÃ¡n, 2021
 */
 #ifndef __COLA_LISTA_ENLAZADA_H
 #define __COLA_LISTA_ENLAZADA_H
 #include <cstddef>
 #include <iostream>
 
-/// Excepciones generadas por algunos métodos
+/// Excepciones generadas por algunos mÃ©todos
 class EColaVacia {};
 
-//Excepción que se levanta si se especifica
-//una posición inválida para la operación
+//ExcepciÃ³n que se levanta si se especifica
+//una posiciÃ³n invÃ¡lida para la operaciÃ³n
 //llevarAlPrincipio. 
 class EPosicionInvalida {};
 
 /**
-Implementación del TAD Cola utilizando una lista enlazada.
+ImplementaciÃ³n del TAD Cola utilizando una lista enlazada.
 
 Las operaciones son:
 
 - ColaVacia: -> Cola. Generadora implementada en el
-constructor sin parámetros.
+constructor sin parÃ¡metros.
 - pon: Cola, Elem -> Cola. Generadora
 - quita: Cola - -> Cola. Modificadora parcial.
 - primero: Cola - -> Elem. Observadora parcial.
 - esVacia: Cola -> Bool. Observadora.
-- longitud: unsigned int. Devuelve el número de elementos
+- longitud: unsigned int. Devuelve el nÃºmero de elementos
 - print: Cola -->  . Observadora
 de la cola.
 
-@author Marco Antonio Gómez Martín   Mercedes Gómez Albarrán
+@author Marco Antonio GÃ³mez MartÃ­n   Mercedes GÃ³mez AlbarrÃ¡n
 */
 template <class T>
 class Cola {
@@ -53,19 +47,19 @@ public:
 	
 
 	/**
-	Desplaza un nodo, identificado por su posición, al principio de la cola.
-	En una cola no vacía, las posiciones válidas varían entre 1 y 
+	Desplaza un nodo, identificado por su posiciÃ³n, al principio de la cola.
+	En una cola no vacÃ­a, las posiciones vÃ¡lidas varÃ­an entre 1 y 
 	la longitud de la cola.
-	En caso de que la posición del nodo no sea válida, se levantará
-	la excepción EPosicionInvalida.
-	@param pos Posición del nodo a desplazar.
+	En caso de que la posiciÃ³n del nodo no sea vÃ¡lida, se levantarÃ¡
+	la excepciÃ³n EPosicionInvalida.
+	@param pos PosiciÃ³n del nodo a desplazar.
 	**/
 
 	
 	// COMPLEJIDAD: 
-	// Incluye aquí un comentario donde, justificadamente, indiques la complejidad de esta operación
-	// La operación es lineal, porque recorre la cola hasta la posición indicada, que en el peor de los casos seria _nelems.
-	// El resto del código son instrucciones constantes.
+	// Incluye aquÃ­ un comentario donde, justificadamente, indiques la complejidad de esta operaciÃ³n
+	// La operaciÃ³n es lineal, porque recorre la cola hasta la posiciÃ³n indicada, que en el peor de los casos seria _nelems.
+	// El resto del cÃ³digo son instrucciones constantes.
 	
 
 	void llevarAlPrincipio(unsigned int pos) {
@@ -95,7 +89,7 @@ public:
 	
 	/** 
 	Imprime la cola por pantalla.
-	Operación observadora.
+	OperaciÃ³n observadora.
 	*/
 	void print() const {
 		if (_prim != NULL) {
@@ -117,10 +111,10 @@ public:
 
 
 	/**
-	Añade un elemento en la parte trasera de la cola.
-	Operación generadora.
+	AÃ±ade un elemento en la parte trasera de la cola.
+	OperaciÃ³n generadora.
 
-	@param elem Elemento a añadir.
+	@param elem Elemento a aÃ±adir.
 	*/
 	void pon(const T &elem) {
 		Nodo *nuevo = new Nodo(elem);
@@ -132,9 +126,9 @@ public:
 
 	/**
 	Elimina el primer elemento de la cola.
-	Operación modificadora parcial.
+	OperaciÃ³n modificadora parcial.
 
-	error: falla si la cola está vacía
+	error: falla si la cola estÃ¡ vacÃ­a
 	*/
 	void quita() {
 		if (esVacia())
@@ -149,10 +143,10 @@ public:
 	}
 
 	/**
-	Devuelve el primer elemento de la cola. Operación
+	Devuelve el primer elemento de la cola. OperaciÃ³n
 	observadora parcial.
 
-	error: falla si la cola está vacía
+	error: falla si la cola estÃ¡ vacÃ­a
 	@return El primer elemento de la cola.
 	*/
 	const T &primero() const {
@@ -164,16 +158,16 @@ public:
 	/**
 	Indica si la cola tiene elementos o no.
 
-	@return true si la cola no tiene ningún elemento.
+	@return true si la cola no tiene ningÃºn elemento.
 	*/
 	bool esVacia() const {
 		return _prim == NULL;
 	}
 
 	/**
-	Devuelve el número de elementos de la cola.
+	Devuelve el nÃºmero de elementos de la cola.
 
-	@return Número de elementos de la cola.
+	@return NÃºmero de elementos de la cola.
 	*/
 	unsigned int longitud() const {
 		return _nelems;
@@ -191,7 +185,7 @@ public:
 		copia(other);
 	}
 
-	/** Operador de asignación */
+	/** Operador de asignaciÃ³n */
 	Cola<T> &operator=(const Cola<T> &other) {
 		if (this != &other) {
 			libera();
@@ -200,7 +194,7 @@ public:
 		return *this;
 	}
 
-	/** Operador de comparación. */
+	/** Operador de comparaciÃ³n. */
 	bool operator==(const Cola<T> &rhs) const {
 		Nodo *p1 = _prim;
 		Nodo *p2 = rhs._prim;
@@ -220,8 +214,8 @@ private:
 
 	/**
 	Clase nodo que almacena internamente el elemento (de tipo T),
-	y un puntero al nodo siguiente, que podría ser NULL si
-	el nodo es el último de la lista enlazada.
+	y un puntero al nodo siguiente, que podrÃ­a ser NULL si
+	el nodo es el Ãºltimo de la lista enlazada.
 	*/
 	class Nodo {
 	public:
@@ -272,10 +266,10 @@ private:
 	/** Puntero al primer elemento. */
 	Nodo *_prim;
 
-	/** Puntero al último elemento. */
+	/** Puntero al Ãºltimo elemento. */
 	Nodo *_ult;
 
-	/** Número de elementos */
+	/** NÃºmero de elementos */
 	unsigned int _nelems;
 };
 
