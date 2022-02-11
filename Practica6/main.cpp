@@ -1,8 +1,3 @@
-//ALUMNOS:
-//GRUPO: B34  LAB: 1
-//COLLADO MAMBLONA, ALBERTO
-//GÓMEZ ALONSO, JOSÉ LUIS
-
 #include "lista.h"
 #include <iostream>
 using namespace std;
